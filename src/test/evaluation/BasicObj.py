@@ -28,5 +28,10 @@ class BasicObj :
     
     def bye(self) :
         print "Bye"
-
+    
+    def iterate(self) :
+        return [1, 2, 3]
+    
+    def bar(self, x) :
+        return self.inc + x
 

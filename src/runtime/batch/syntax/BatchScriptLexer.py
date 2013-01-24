@@ -1,4 +1,4 @@
-# $ANTLR 3.1.1 /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g 2012-07-30 19:29:34
+# $ANTLR 3.1.3 Mar 17, 2009 19:23:44 BatchScript.g 2012-11-27 16:47:28
 
 import sys
 from antlr3 import *
@@ -10,21 +10,21 @@ HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
 FUNCTION=8
-EXPONENT=21
+EXPONENT=22
 T__29=29
-T__28=28
-OCTAL_ESC=26
+OCTAL_ESC=27
+INPUT=10
 FOR=7
-FLOAT=17
-ID=15
+FLOAT=18
+ID=16
 EOF=-1
 IF=4
-ESC_SEQ=27
-IN=13
+ESC_SEQ=28
+IN=14
 THEN=5
-VAR=10
-DIGIT=19
-COMMENT=22
+VAR=11
+DIGIT=20
+COMMENT=23
 T__42=42
 T__43=43
 T__40=40
@@ -34,16 +34,17 @@ T__47=47
 T__44=44
 T__45=45
 T__48=48
-UNICODE_ESC=24
+T__49=49
+UNICODE_ESC=25
 ELSE=6
-HEX_DIGIT=25
-INT=16
-TRUE=11
-ALPHA=20
+HEX_DIGIT=26
+INT=17
+TRUE=12
+ALPHA=21
 T__30=30
 T__31=31
 T__32=32
-WS=23
+WS=24
 T__33=33
 T__34=34
 T__35=35
@@ -51,22 +52,23 @@ T__36=36
 T__37=37
 T__38=38
 T__39=39
-DATE=14
-FALSE=12
+DATE=15
+FALSE=13
 OUTPUT=9
-STRING=18
+STRING=19
 
 
 class BatchScriptLexer(Lexer):
 
-    grammarFileName = "/Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g"
-    antlr_version = version_str_to_tuple("3.1.1")
-    antlr_version_str = "3.1.1"
+    grammarFileName = "BatchScript.g"
+    antlr_version = version_str_to_tuple("3.1.3 Mar 17, 2009 19:23:44")
+    antlr_version_str = "3.1.3 Mar 17, 2009 19:23:44"
 
     def __init__(self, input=None, state=None):
         if state is None:
             state = RecognizerSharedState()
-        Lexer.__init__(self, input, state)
+        super(BatchScriptLexer, self).__init__(input, state)
+
 
         self.dfa10 = self.DFA10(
             self, 10,
@@ -102,8 +104,8 @@ class BatchScriptLexer(Lexer):
             _type = IF
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:7:4: ( 'if' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:7:6: 'if'
+            # BatchScript.g:7:4: ( 'if' )
+            # BatchScript.g:7:6: 'if'
             pass 
             self.match("if")
 
@@ -127,8 +129,8 @@ class BatchScriptLexer(Lexer):
             _type = THEN
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:8:6: ( 'then' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:8:8: 'then'
+            # BatchScript.g:8:6: ( 'then' )
+            # BatchScript.g:8:8: 'then'
             pass 
             self.match("then")
 
@@ -152,8 +154,8 @@ class BatchScriptLexer(Lexer):
             _type = ELSE
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:9:6: ( 'else' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:9:8: 'else'
+            # BatchScript.g:9:6: ( 'else' )
+            # BatchScript.g:9:8: 'else'
             pass 
             self.match("else")
 
@@ -177,8 +179,8 @@ class BatchScriptLexer(Lexer):
             _type = FOR
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:10:5: ( 'for' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:10:7: 'for'
+            # BatchScript.g:10:5: ( 'for' )
+            # BatchScript.g:10:7: 'for'
             pass 
             self.match("for")
 
@@ -202,8 +204,8 @@ class BatchScriptLexer(Lexer):
             _type = FUNCTION
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:11:10: ( 'function' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:11:12: 'function'
+            # BatchScript.g:11:10: ( 'function' )
+            # BatchScript.g:11:12: 'function'
             pass 
             self.match("function")
 
@@ -227,8 +229,8 @@ class BatchScriptLexer(Lexer):
             _type = OUTPUT
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:12:8: ( 'OUTPUT' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:12:10: 'OUTPUT'
+            # BatchScript.g:12:8: ( 'OUTPUT' )
+            # BatchScript.g:12:10: 'OUTPUT'
             pass 
             self.match("OUTPUT")
 
@@ -245,6 +247,31 @@ class BatchScriptLexer(Lexer):
 
 
 
+    # $ANTLR start "INPUT"
+    def mINPUT(self, ):
+
+        try:
+            _type = INPUT
+            _channel = DEFAULT_CHANNEL
+
+            # BatchScript.g:13:7: ( 'INPUT' )
+            # BatchScript.g:13:9: 'INPUT'
+            pass 
+            self.match("INPUT")
+
+
+
+            self._state.type = _type
+            self._state.channel = _channel
+
+        finally:
+
+            pass
+
+    # $ANTLR end "INPUT"
+
+
+
     # $ANTLR start "VAR"
     def mVAR(self, ):
 
@@ -252,8 +279,8 @@ class BatchScriptLexer(Lexer):
             _type = VAR
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:13:5: ( 'var' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:13:7: 'var'
+            # BatchScript.g:14:5: ( 'var' )
+            # BatchScript.g:14:7: 'var'
             pass 
             self.match("var")
 
@@ -277,8 +304,8 @@ class BatchScriptLexer(Lexer):
             _type = TRUE
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:14:6: ( 'true' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:14:8: 'true'
+            # BatchScript.g:15:6: ( 'true' )
+            # BatchScript.g:15:8: 'true'
             pass 
             self.match("true")
 
@@ -302,8 +329,8 @@ class BatchScriptLexer(Lexer):
             _type = FALSE
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:15:7: ( 'false' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:15:9: 'false'
+            # BatchScript.g:16:7: ( 'false' )
+            # BatchScript.g:16:9: 'false'
             pass 
             self.match("false")
 
@@ -327,8 +354,8 @@ class BatchScriptLexer(Lexer):
             _type = IN
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:16:4: ( 'in' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:16:6: 'in'
+            # BatchScript.g:17:4: ( 'in' )
+            # BatchScript.g:17:6: 'in'
             pass 
             self.match("in")
 
@@ -352,8 +379,8 @@ class BatchScriptLexer(Lexer):
             _type = DATE
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:17:6: ( 'date' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:17:8: 'date'
+            # BatchScript.g:18:6: ( 'date' )
+            # BatchScript.g:18:8: 'date'
             pass 
             self.match("date")
 
@@ -370,31 +397,6 @@ class BatchScriptLexer(Lexer):
 
 
 
-    # $ANTLR start "T__28"
-    def mT__28(self, ):
-
-        try:
-            _type = T__28
-            _channel = DEFAULT_CHANNEL
-
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:18:7: ( ';' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:18:9: ';'
-            pass 
-            self.match(59)
-
-
-
-            self._state.type = _type
-            self._state.channel = _channel
-
-        finally:
-
-            pass
-
-    # $ANTLR end "T__28"
-
-
-
     # $ANTLR start "T__29"
     def mT__29(self, ):
 
@@ -402,10 +404,10 @@ class BatchScriptLexer(Lexer):
             _type = T__29
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:19:7: ( '=' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:19:9: '='
+            # BatchScript.g:19:7: ( ';' )
+            # BatchScript.g:19:9: ';'
             pass 
-            self.match(61)
+            self.match(59)
 
 
 
@@ -427,10 +429,10 @@ class BatchScriptLexer(Lexer):
             _type = T__30
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:20:7: ( '{' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:20:9: '{'
+            # BatchScript.g:20:7: ( '=' )
+            # BatchScript.g:20:9: '='
             pass 
-            self.match(123)
+            self.match(61)
 
 
 
@@ -452,10 +454,10 @@ class BatchScriptLexer(Lexer):
             _type = T__31
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:21:7: ( '}' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:21:9: '}'
+            # BatchScript.g:21:7: ( '{' )
+            # BatchScript.g:21:9: '{'
             pass 
-            self.match(125)
+            self.match(123)
 
 
 
@@ -477,10 +479,10 @@ class BatchScriptLexer(Lexer):
             _type = T__32
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:22:7: ( '(' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:22:9: '('
+            # BatchScript.g:22:7: ( '}' )
+            # BatchScript.g:22:9: '}'
             pass 
-            self.match(40)
+            self.match(125)
 
 
 
@@ -502,10 +504,10 @@ class BatchScriptLexer(Lexer):
             _type = T__33
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:23:7: ( ')' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:23:9: ')'
+            # BatchScript.g:23:7: ( '(' )
+            # BatchScript.g:23:9: '('
             pass 
-            self.match(41)
+            self.match(40)
 
 
 
@@ -527,10 +529,10 @@ class BatchScriptLexer(Lexer):
             _type = T__34
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:24:7: ( '||' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:24:9: '||'
+            # BatchScript.g:24:7: ( ')' )
+            # BatchScript.g:24:9: ')'
             pass 
-            self.match("||")
+            self.match(41)
 
 
 
@@ -552,10 +554,10 @@ class BatchScriptLexer(Lexer):
             _type = T__35
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:25:7: ( '&&' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:25:9: '&&'
+            # BatchScript.g:25:7: ( '||' )
+            # BatchScript.g:25:9: '||'
             pass 
-            self.match("&&")
+            self.match("||")
 
 
 
@@ -577,10 +579,10 @@ class BatchScriptLexer(Lexer):
             _type = T__36
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:26:7: ( '==' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:26:9: '=='
+            # BatchScript.g:26:7: ( '&&' )
+            # BatchScript.g:26:9: '&&'
             pass 
-            self.match("==")
+            self.match("&&")
 
 
 
@@ -602,10 +604,10 @@ class BatchScriptLexer(Lexer):
             _type = T__37
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:27:7: ( '!=' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:27:9: '!='
+            # BatchScript.g:27:7: ( '==' )
+            # BatchScript.g:27:9: '=='
             pass 
-            self.match("!=")
+            self.match("==")
 
 
 
@@ -627,10 +629,10 @@ class BatchScriptLexer(Lexer):
             _type = T__38
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:28:7: ( '<' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:28:9: '<'
+            # BatchScript.g:28:7: ( '!=' )
+            # BatchScript.g:28:9: '!='
             pass 
-            self.match(60)
+            self.match("!=")
 
 
 
@@ -652,10 +654,10 @@ class BatchScriptLexer(Lexer):
             _type = T__39
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:29:7: ( '<=' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:29:9: '<='
+            # BatchScript.g:29:7: ( '<' )
+            # BatchScript.g:29:9: '<'
             pass 
-            self.match("<=")
+            self.match(60)
 
 
 
@@ -677,10 +679,10 @@ class BatchScriptLexer(Lexer):
             _type = T__40
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:30:7: ( '>' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:30:9: '>'
+            # BatchScript.g:30:7: ( '<=' )
+            # BatchScript.g:30:9: '<='
             pass 
-            self.match(62)
+            self.match("<=")
 
 
 
@@ -702,10 +704,10 @@ class BatchScriptLexer(Lexer):
             _type = T__41
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:31:7: ( '>=' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:31:9: '>='
+            # BatchScript.g:31:7: ( '>' )
+            # BatchScript.g:31:9: '>'
             pass 
-            self.match(">=")
+            self.match(62)
 
 
 
@@ -727,10 +729,10 @@ class BatchScriptLexer(Lexer):
             _type = T__42
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:32:7: ( '+' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:32:9: '+'
+            # BatchScript.g:32:7: ( '>=' )
+            # BatchScript.g:32:9: '>='
             pass 
-            self.match(43)
+            self.match(">=")
 
 
 
@@ -752,10 +754,10 @@ class BatchScriptLexer(Lexer):
             _type = T__43
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:33:7: ( '-' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:33:9: '-'
+            # BatchScript.g:33:7: ( '+' )
+            # BatchScript.g:33:9: '+'
             pass 
-            self.match(45)
+            self.match(43)
 
 
 
@@ -777,10 +779,10 @@ class BatchScriptLexer(Lexer):
             _type = T__44
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:34:7: ( '*' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:34:9: '*'
+            # BatchScript.g:34:7: ( '-' )
+            # BatchScript.g:34:9: '-'
             pass 
-            self.match(42)
+            self.match(45)
 
 
 
@@ -802,10 +804,10 @@ class BatchScriptLexer(Lexer):
             _type = T__45
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:35:7: ( '/' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:35:9: '/'
+            # BatchScript.g:35:7: ( '*' )
+            # BatchScript.g:35:9: '*'
             pass 
-            self.match(47)
+            self.match(42)
 
 
 
@@ -827,10 +829,10 @@ class BatchScriptLexer(Lexer):
             _type = T__46
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:36:7: ( '!' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:36:9: '!'
+            # BatchScript.g:36:7: ( '/' )
+            # BatchScript.g:36:9: '/'
             pass 
-            self.match(33)
+            self.match(47)
 
 
 
@@ -852,10 +854,10 @@ class BatchScriptLexer(Lexer):
             _type = T__47
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:37:7: ( ',' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:37:9: ','
+            # BatchScript.g:37:7: ( '!' )
+            # BatchScript.g:37:9: '!'
             pass 
-            self.match(44)
+            self.match(33)
 
 
 
@@ -877,10 +879,10 @@ class BatchScriptLexer(Lexer):
             _type = T__48
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:38:7: ( '.' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:38:9: '.'
+            # BatchScript.g:38:7: ( ',' )
+            # BatchScript.g:38:9: ','
             pass 
-            self.match(46)
+            self.match(44)
 
 
 
@@ -895,12 +897,37 @@ class BatchScriptLexer(Lexer):
 
 
 
+    # $ANTLR start "T__49"
+    def mT__49(self, ):
+
+        try:
+            _type = T__49
+            _channel = DEFAULT_CHANNEL
+
+            # BatchScript.g:39:7: ( '.' )
+            # BatchScript.g:39:9: '.'
+            pass 
+            self.match(46)
+
+
+
+            self._state.type = _type
+            self._state.channel = _channel
+
+        finally:
+
+            pass
+
+    # $ANTLR end "T__49"
+
+
+
     # $ANTLR start "DIGIT"
     def mDIGIT(self, ):
 
         try:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:149:9: ( '0' .. '9' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:149:13: '0' .. '9'
+            # BatchScript.g:152:9: ( '0' .. '9' )
+            # BatchScript.g:152:13: '0' .. '9'
             pass 
             self.matchRange(48, 57)
 
@@ -919,8 +946,8 @@ class BatchScriptLexer(Lexer):
     def mALPHA(self, ):
 
         try:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:152:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:152:13: ( 'a' .. 'z' | 'A' .. 'Z' | '_' )
+            # BatchScript.g:155:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) )
+            # BatchScript.g:155:13: ( 'a' .. 'z' | 'A' .. 'Z' | '_' )
             pass 
             if (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122):
                 self.input.consume()
@@ -948,7 +975,7 @@ class BatchScriptLexer(Lexer):
             _type = ID
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:154:9: ( ALPHA ( ALPHA | DIGIT )* | ( '*' ) )
+            # BatchScript.g:157:9: ( ALPHA ( ALPHA | DIGIT )* | ( '*' ) )
             alt2 = 2
             LA2_0 = self.input.LA(1)
 
@@ -962,10 +989,10 @@ class BatchScriptLexer(Lexer):
                 raise nvae
 
             if alt2 == 1:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:154:13: ALPHA ( ALPHA | DIGIT )*
+                # BatchScript.g:157:13: ALPHA ( ALPHA | DIGIT )*
                 pass 
                 self.mALPHA()
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:154:19: ( ALPHA | DIGIT )*
+                # BatchScript.g:157:19: ( ALPHA | DIGIT )*
                 while True: #loop1
                     alt1 = 2
                     LA1_0 = self.input.LA(1)
@@ -975,7 +1002,7 @@ class BatchScriptLexer(Lexer):
 
 
                     if alt1 == 1:
-                        # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:
+                        # BatchScript.g:
                         pass 
                         if (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122):
                             self.input.consume()
@@ -990,13 +1017,11 @@ class BatchScriptLexer(Lexer):
                         break #loop1
 
 
-
-
             elif alt2 == 2:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:155:13: ( '*' )
+                # BatchScript.g:158:13: ( '*' )
                 pass 
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:155:13: ( '*' )
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:155:14: '*'
+                # BatchScript.g:158:13: ( '*' )
+                # BatchScript.g:158:14: '*'
                 pass 
                 self.match(42)
 
@@ -1022,10 +1047,10 @@ class BatchScriptLexer(Lexer):
             _type = INT
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:158:9: ( ( DIGIT )+ )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:158:13: ( DIGIT )+
+            # BatchScript.g:161:9: ( ( DIGIT )+ )
+            # BatchScript.g:161:13: ( DIGIT )+
             pass 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:158:13: ( DIGIT )+
+            # BatchScript.g:161:13: ( DIGIT )+
             cnt3 = 0
             while True: #loop3
                 alt3 = 2
@@ -1036,7 +1061,7 @@ class BatchScriptLexer(Lexer):
 
 
                 if alt3 == 1:
-                    # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:158:13: DIGIT
+                    # BatchScript.g:161:13: DIGIT
                     pass 
                     self.mDIGIT()
 
@@ -1049,8 +1074,6 @@ class BatchScriptLexer(Lexer):
                     raise eee
 
                 cnt3 += 1
-
-
 
 
 
@@ -1072,13 +1095,13 @@ class BatchScriptLexer(Lexer):
             _type = FLOAT
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:9: ( ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )? | '.' ( DIGIT )+ ( EXPONENT )? | ( DIGIT )+ EXPONENT )
+            # BatchScript.g:162:9: ( ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )? | '.' ( DIGIT )+ ( EXPONENT )? | ( DIGIT )+ EXPONENT )
             alt10 = 3
             alt10 = self.dfa10.predict(self.input)
             if alt10 == 1:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:13: ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )?
+                # BatchScript.g:162:13: ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )?
                 pass 
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:13: ( DIGIT )+
+                # BatchScript.g:162:13: ( DIGIT )+
                 cnt4 = 0
                 while True: #loop4
                     alt4 = 2
@@ -1089,7 +1112,7 @@ class BatchScriptLexer(Lexer):
 
 
                     if alt4 == 1:
-                        # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:13: DIGIT
+                        # BatchScript.g:162:13: DIGIT
                         pass 
                         self.mDIGIT()
 
@@ -1102,10 +1125,8 @@ class BatchScriptLexer(Lexer):
                         raise eee
 
                     cnt4 += 1
-
-
                 self.match(46)
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:24: ( DIGIT )*
+                # BatchScript.g:162:24: ( DIGIT )*
                 while True: #loop5
                     alt5 = 2
                     LA5_0 = self.input.LA(1)
@@ -1115,23 +1136,21 @@ class BatchScriptLexer(Lexer):
 
 
                     if alt5 == 1:
-                        # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:24: DIGIT
+                        # BatchScript.g:162:24: DIGIT
                         pass 
                         self.mDIGIT()
 
 
                     else:
                         break #loop5
-
-
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:31: ( EXPONENT )?
+                # BatchScript.g:162:31: ( EXPONENT )?
                 alt6 = 2
                 LA6_0 = self.input.LA(1)
 
                 if (LA6_0 == 69 or LA6_0 == 101) :
                     alt6 = 1
                 if alt6 == 1:
-                    # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:31: EXPONENT
+                    # BatchScript.g:162:31: EXPONENT
                     pass 
                     self.mEXPONENT()
 
@@ -1140,10 +1159,10 @@ class BatchScriptLexer(Lexer):
 
 
             elif alt10 == 2:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:43: '.' ( DIGIT )+ ( EXPONENT )?
+                # BatchScript.g:162:43: '.' ( DIGIT )+ ( EXPONENT )?
                 pass 
                 self.match(46)
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:47: ( DIGIT )+
+                # BatchScript.g:162:47: ( DIGIT )+
                 cnt7 = 0
                 while True: #loop7
                     alt7 = 2
@@ -1154,7 +1173,7 @@ class BatchScriptLexer(Lexer):
 
 
                     if alt7 == 1:
-                        # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:47: DIGIT
+                        # BatchScript.g:162:47: DIGIT
                         pass 
                         self.mDIGIT()
 
@@ -1167,16 +1186,14 @@ class BatchScriptLexer(Lexer):
                         raise eee
 
                     cnt7 += 1
-
-
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:54: ( EXPONENT )?
+                # BatchScript.g:162:54: ( EXPONENT )?
                 alt8 = 2
                 LA8_0 = self.input.LA(1)
 
                 if (LA8_0 == 69 or LA8_0 == 101) :
                     alt8 = 1
                 if alt8 == 1:
-                    # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:54: EXPONENT
+                    # BatchScript.g:162:54: EXPONENT
                     pass 
                     self.mEXPONENT()
 
@@ -1185,9 +1202,9 @@ class BatchScriptLexer(Lexer):
 
 
             elif alt10 == 3:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:66: ( DIGIT )+ EXPONENT
+                # BatchScript.g:162:66: ( DIGIT )+ EXPONENT
                 pass 
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:66: ( DIGIT )+
+                # BatchScript.g:162:66: ( DIGIT )+
                 cnt9 = 0
                 while True: #loop9
                     alt9 = 2
@@ -1198,7 +1215,7 @@ class BatchScriptLexer(Lexer):
 
 
                     if alt9 == 1:
-                        # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:159:66: DIGIT
+                        # BatchScript.g:162:66: DIGIT
                         pass 
                         self.mDIGIT()
 
@@ -1211,8 +1228,6 @@ class BatchScriptLexer(Lexer):
                         raise eee
 
                     cnt9 += 1
-
-
                 self.mEXPONENT()
 
 
@@ -1234,7 +1249,7 @@ class BatchScriptLexer(Lexer):
             _type = COMMENT
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:161:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+            # BatchScript.g:164:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
             alt14 = 2
             LA14_0 = self.input.LA(1)
 
@@ -1256,10 +1271,10 @@ class BatchScriptLexer(Lexer):
                 raise nvae
 
             if alt14 == 1:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:161:13: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+                # BatchScript.g:164:13: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                 pass 
                 self.match("//")
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:161:18: (~ ( '\\n' | '\\r' ) )*
+                # BatchScript.g:164:18: (~ ( '\\n' | '\\r' ) )*
                 while True: #loop11
                     alt11 = 2
                     LA11_0 = self.input.LA(1)
@@ -1269,7 +1284,7 @@ class BatchScriptLexer(Lexer):
 
 
                     if alt11 == 1:
-                        # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:161:18: ~ ( '\\n' | '\\r' )
+                        # BatchScript.g:164:18: ~ ( '\\n' | '\\r' )
                         pass 
                         if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 65535):
                             self.input.consume()
@@ -1282,16 +1297,14 @@ class BatchScriptLexer(Lexer):
 
                     else:
                         break #loop11
-
-
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:161:32: ( '\\r' )?
+                # BatchScript.g:164:32: ( '\\r' )?
                 alt12 = 2
                 LA12_0 = self.input.LA(1)
 
                 if (LA12_0 == 13) :
                     alt12 = 1
                 if alt12 == 1:
-                    # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:161:32: '\\r'
+                    # BatchScript.g:164:32: '\\r'
                     pass 
                     self.match(13)
 
@@ -1304,10 +1317,10 @@ class BatchScriptLexer(Lexer):
 
 
             elif alt14 == 2:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:162:13: '/*' ( options {greedy=false; } : . )* '*/'
+                # BatchScript.g:165:13: '/*' ( options {greedy=false; } : . )* '*/'
                 pass 
                 self.match("/*")
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:162:18: ( options {greedy=false; } : . )*
+                # BatchScript.g:165:18: ( options {greedy=false; } : . )*
                 while True: #loop13
                     alt13 = 2
                     LA13_0 = self.input.LA(1)
@@ -1326,15 +1339,13 @@ class BatchScriptLexer(Lexer):
 
 
                     if alt13 == 1:
-                        # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:162:46: .
+                        # BatchScript.g:165:46: .
                         pass 
                         self.matchAny()
 
 
                     else:
                         break #loop13
-
-
                 self.match("*/")
                 #action start
                 _channel=HIDDEN;
@@ -1359,8 +1370,8 @@ class BatchScriptLexer(Lexer):
             _type = WS
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:165:9: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:165:13: ( ' ' | '\\t' | '\\r' | '\\n' )
+            # BatchScript.g:168:9: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            # BatchScript.g:168:13: ( ' ' | '\\t' | '\\r' | '\\n' )
             pass 
             if (9 <= self.input.LA(1) <= 10) or self.input.LA(1) == 13 or self.input.LA(1) == 32:
                 self.input.consume()
@@ -1393,11 +1404,11 @@ class BatchScriptLexer(Lexer):
             _type = STRING
             _channel = DEFAULT_CHANNEL
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:168:9: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | ~ ( '\\\\' | '\"' ) )* '\"' )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:168:13: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | ~ ( '\\\\' | '\"' ) )* '\"'
+            # BatchScript.g:171:9: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | ~ ( '\\\\' | '\"' ) )* '\"' )
+            # BatchScript.g:171:13: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | ~ ( '\\\\' | '\"' ) )* '\"'
             pass 
             self.match(34)
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:168:17: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | ~ ( '\\\\' | '\"' ) )*
+            # BatchScript.g:171:17: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | ~ ( '\\\\' | '\"' ) )*
             while True: #loop15
                 alt15 = 4
                 LA15_0 = self.input.LA(1)
@@ -1416,7 +1427,7 @@ class BatchScriptLexer(Lexer):
 
 
                 if alt15 == 1:
-                    # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:168:19: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    # BatchScript.g:171:19: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     pass 
                     self.match(92)
                     if self.input.LA(1) == 34 or self.input.LA(1) == 39 or self.input.LA(1) == 92 or self.input.LA(1) == 98 or self.input.LA(1) == 102 or self.input.LA(1) == 110 or self.input.LA(1) == 114 or self.input.LA(1) == 116:
@@ -1429,13 +1440,13 @@ class BatchScriptLexer(Lexer):
 
 
                 elif alt15 == 2:
-                    # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:168:63: UNICODE_ESC
+                    # BatchScript.g:171:63: UNICODE_ESC
                     pass 
                     self.mUNICODE_ESC()
 
 
                 elif alt15 == 3:
-                    # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:168:77: ~ ( '\\\\' | '\"' )
+                    # BatchScript.g:171:77: ~ ( '\\\\' | '\"' )
                     pass 
                     if (0 <= self.input.LA(1) <= 33) or (35 <= self.input.LA(1) <= 91) or (93 <= self.input.LA(1) <= 65535):
                         self.input.consume()
@@ -1448,8 +1459,6 @@ class BatchScriptLexer(Lexer):
 
                 else:
                     break #loop15
-
-
             self.match(34)
 
 
@@ -1469,8 +1478,8 @@ class BatchScriptLexer(Lexer):
     def mEXPONENT(self, ):
 
         try:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:172:13: ( ( 'e' | 'E' ) ( '+' | '-' )? ( DIGIT )+ )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:172:17: ( 'e' | 'E' ) ( '+' | '-' )? ( DIGIT )+
+            # BatchScript.g:175:13: ( ( 'e' | 'E' ) ( '+' | '-' )? ( DIGIT )+ )
+            # BatchScript.g:175:17: ( 'e' | 'E' ) ( '+' | '-' )? ( DIGIT )+
             pass 
             if self.input.LA(1) == 69 or self.input.LA(1) == 101:
                 self.input.consume()
@@ -1479,14 +1488,14 @@ class BatchScriptLexer(Lexer):
                 self.recover(mse)
                 raise mse
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:172:27: ( '+' | '-' )?
+            # BatchScript.g:175:27: ( '+' | '-' )?
             alt16 = 2
             LA16_0 = self.input.LA(1)
 
             if (LA16_0 == 43 or LA16_0 == 45) :
                 alt16 = 1
             if alt16 == 1:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:
+                # BatchScript.g:
                 pass 
                 if self.input.LA(1) == 43 or self.input.LA(1) == 45:
                     self.input.consume()
@@ -1498,7 +1507,7 @@ class BatchScriptLexer(Lexer):
 
 
 
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:172:38: ( DIGIT )+
+            # BatchScript.g:175:38: ( DIGIT )+
             cnt17 = 0
             while True: #loop17
                 alt17 = 2
@@ -1509,7 +1518,7 @@ class BatchScriptLexer(Lexer):
 
 
                 if alt17 == 1:
-                    # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:172:38: DIGIT
+                    # BatchScript.g:175:38: DIGIT
                     pass 
                     self.mDIGIT()
 
@@ -1526,8 +1535,6 @@ class BatchScriptLexer(Lexer):
 
 
 
-
-
         finally:
 
             pass
@@ -1540,8 +1547,8 @@ class BatchScriptLexer(Lexer):
     def mHEX_DIGIT(self, ):
 
         try:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:175:13: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:175:17: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+            # BatchScript.g:178:13: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            # BatchScript.g:178:17: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
             pass 
             if (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 70) or (97 <= self.input.LA(1) <= 102):
                 self.input.consume()
@@ -1566,7 +1573,7 @@ class BatchScriptLexer(Lexer):
     def mESC_SEQ(self, ):
 
         try:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:178:13: ( | UNICODE_ESC | OCTAL_ESC )
+            # BatchScript.g:181:13: ( | UNICODE_ESC | OCTAL_ESC )
             alt18 = 3
             LA18_0 = self.input.LA(1)
 
@@ -1585,17 +1592,17 @@ class BatchScriptLexer(Lexer):
             else:
                 alt18 = 1
             if alt18 == 1:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:179:13: 
+                # BatchScript.g:182:13: 
                 pass 
 
             elif alt18 == 2:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:179:17: UNICODE_ESC
+                # BatchScript.g:182:17: UNICODE_ESC
                 pass 
                 self.mUNICODE_ESC()
 
 
             elif alt18 == 3:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:180:17: OCTAL_ESC
+                # BatchScript.g:183:17: OCTAL_ESC
                 pass 
                 self.mOCTAL_ESC()
 
@@ -1613,7 +1620,7 @@ class BatchScriptLexer(Lexer):
     def mOCTAL_ESC(self, ):
 
         try:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:184:13: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            # BatchScript.g:187:13: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             alt19 = 3
             LA19_0 = self.input.LA(1)
 
@@ -1624,9 +1631,9 @@ class BatchScriptLexer(Lexer):
                     LA19_2 = self.input.LA(3)
 
                     if ((48 <= LA19_2 <= 55)) :
-                        LA19_5 = self.input.LA(4)
+                        LA19_4 = self.input.LA(4)
 
-                        if ((48 <= LA19_5 <= 55)) :
+                        if ((48 <= LA19_4 <= 55)) :
                             alt19 = 1
                         else:
                             alt19 = 2
@@ -1650,25 +1657,25 @@ class BatchScriptLexer(Lexer):
                 raise nvae
 
             if alt19 == 1:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:184:17: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                # BatchScript.g:187:17: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                 pass 
                 self.match(92)
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:184:22: ( '0' .. '3' )
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:184:23: '0' .. '3'
+                # BatchScript.g:187:22: ( '0' .. '3' )
+                # BatchScript.g:187:23: '0' .. '3'
                 pass 
                 self.matchRange(48, 51)
 
 
 
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:184:32: ( '0' .. '7' )
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:184:33: '0' .. '7'
+                # BatchScript.g:187:32: ( '0' .. '7' )
+                # BatchScript.g:187:33: '0' .. '7'
                 pass 
                 self.matchRange(48, 55)
 
 
 
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:184:42: ( '0' .. '7' )
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:184:43: '0' .. '7'
+                # BatchScript.g:187:42: ( '0' .. '7' )
+                # BatchScript.g:187:43: '0' .. '7'
                 pass 
                 self.matchRange(48, 55)
 
@@ -1677,18 +1684,18 @@ class BatchScriptLexer(Lexer):
 
 
             elif alt19 == 2:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:185:17: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                # BatchScript.g:188:17: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                 pass 
                 self.match(92)
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:185:22: ( '0' .. '7' )
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:185:23: '0' .. '7'
+                # BatchScript.g:188:22: ( '0' .. '7' )
+                # BatchScript.g:188:23: '0' .. '7'
                 pass 
                 self.matchRange(48, 55)
 
 
 
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:185:32: ( '0' .. '7' )
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:185:33: '0' .. '7'
+                # BatchScript.g:188:32: ( '0' .. '7' )
+                # BatchScript.g:188:33: '0' .. '7'
                 pass 
                 self.matchRange(48, 55)
 
@@ -1697,11 +1704,11 @@ class BatchScriptLexer(Lexer):
 
 
             elif alt19 == 3:
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:186:17: '\\\\' ( '0' .. '7' )
+                # BatchScript.g:189:17: '\\\\' ( '0' .. '7' )
                 pass 
                 self.match(92)
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:186:22: ( '0' .. '7' )
-                # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:186:23: '0' .. '7'
+                # BatchScript.g:189:22: ( '0' .. '7' )
+                # BatchScript.g:189:23: '0' .. '7'
                 pass 
                 self.matchRange(48, 55)
 
@@ -1722,8 +1729,8 @@ class BatchScriptLexer(Lexer):
     def mUNICODE_ESC(self, ):
 
         try:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:190:13: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:190:17: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+            # BatchScript.g:193:13: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+            # BatchScript.g:193:17: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
             pass 
             self.match(92)
             self.match(117)
@@ -1744,233 +1751,239 @@ class BatchScriptLexer(Lexer):
 
 
     def mTokens(self):
-        # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:8: ( IF | THEN | ELSE | FOR | FUNCTION | OUTPUT | VAR | TRUE | FALSE | IN | DATE | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | ID | INT | FLOAT | COMMENT | WS | STRING )
-        alt20 = 38
+        # BatchScript.g:1:8: ( IF | THEN | ELSE | FOR | FUNCTION | OUTPUT | INPUT | VAR | TRUE | FALSE | IN | DATE | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | ID | INT | FLOAT | COMMENT | WS | STRING )
+        alt20 = 39
         alt20 = self.dfa20.predict(self.input)
         if alt20 == 1:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:10: IF
+            # BatchScript.g:1:10: IF
             pass 
             self.mIF()
 
 
         elif alt20 == 2:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:13: THEN
+            # BatchScript.g:1:13: THEN
             pass 
             self.mTHEN()
 
 
         elif alt20 == 3:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:18: ELSE
+            # BatchScript.g:1:18: ELSE
             pass 
             self.mELSE()
 
 
         elif alt20 == 4:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:23: FOR
+            # BatchScript.g:1:23: FOR
             pass 
             self.mFOR()
 
 
         elif alt20 == 5:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:27: FUNCTION
+            # BatchScript.g:1:27: FUNCTION
             pass 
             self.mFUNCTION()
 
 
         elif alt20 == 6:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:36: OUTPUT
+            # BatchScript.g:1:36: OUTPUT
             pass 
             self.mOUTPUT()
 
 
         elif alt20 == 7:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:43: VAR
+            # BatchScript.g:1:43: INPUT
+            pass 
+            self.mINPUT()
+
+
+        elif alt20 == 8:
+            # BatchScript.g:1:49: VAR
             pass 
             self.mVAR()
 
 
-        elif alt20 == 8:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:47: TRUE
+        elif alt20 == 9:
+            # BatchScript.g:1:53: TRUE
             pass 
             self.mTRUE()
 
 
-        elif alt20 == 9:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:52: FALSE
+        elif alt20 == 10:
+            # BatchScript.g:1:58: FALSE
             pass 
             self.mFALSE()
 
 
-        elif alt20 == 10:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:58: IN
+        elif alt20 == 11:
+            # BatchScript.g:1:64: IN
             pass 
             self.mIN()
 
 
-        elif alt20 == 11:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:61: DATE
+        elif alt20 == 12:
+            # BatchScript.g:1:67: DATE
             pass 
             self.mDATE()
 
 
-        elif alt20 == 12:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:66: T__28
-            pass 
-            self.mT__28()
-
-
         elif alt20 == 13:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:72: T__29
+            # BatchScript.g:1:72: T__29
             pass 
             self.mT__29()
 
 
         elif alt20 == 14:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:78: T__30
+            # BatchScript.g:1:78: T__30
             pass 
             self.mT__30()
 
 
         elif alt20 == 15:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:84: T__31
+            # BatchScript.g:1:84: T__31
             pass 
             self.mT__31()
 
 
         elif alt20 == 16:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:90: T__32
+            # BatchScript.g:1:90: T__32
             pass 
             self.mT__32()
 
 
         elif alt20 == 17:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:96: T__33
+            # BatchScript.g:1:96: T__33
             pass 
             self.mT__33()
 
 
         elif alt20 == 18:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:102: T__34
+            # BatchScript.g:1:102: T__34
             pass 
             self.mT__34()
 
 
         elif alt20 == 19:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:108: T__35
+            # BatchScript.g:1:108: T__35
             pass 
             self.mT__35()
 
 
         elif alt20 == 20:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:114: T__36
+            # BatchScript.g:1:114: T__36
             pass 
             self.mT__36()
 
 
         elif alt20 == 21:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:120: T__37
+            # BatchScript.g:1:120: T__37
             pass 
             self.mT__37()
 
 
         elif alt20 == 22:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:126: T__38
+            # BatchScript.g:1:126: T__38
             pass 
             self.mT__38()
 
 
         elif alt20 == 23:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:132: T__39
+            # BatchScript.g:1:132: T__39
             pass 
             self.mT__39()
 
 
         elif alt20 == 24:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:138: T__40
+            # BatchScript.g:1:138: T__40
             pass 
             self.mT__40()
 
 
         elif alt20 == 25:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:144: T__41
+            # BatchScript.g:1:144: T__41
             pass 
             self.mT__41()
 
 
         elif alt20 == 26:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:150: T__42
+            # BatchScript.g:1:150: T__42
             pass 
             self.mT__42()
 
 
         elif alt20 == 27:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:156: T__43
+            # BatchScript.g:1:156: T__43
             pass 
             self.mT__43()
 
 
         elif alt20 == 28:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:162: T__44
+            # BatchScript.g:1:162: T__44
             pass 
             self.mT__44()
 
 
         elif alt20 == 29:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:168: T__45
+            # BatchScript.g:1:168: T__45
             pass 
             self.mT__45()
 
 
         elif alt20 == 30:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:174: T__46
+            # BatchScript.g:1:174: T__46
             pass 
             self.mT__46()
 
 
         elif alt20 == 31:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:180: T__47
+            # BatchScript.g:1:180: T__47
             pass 
             self.mT__47()
 
 
         elif alt20 == 32:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:186: T__48
+            # BatchScript.g:1:186: T__48
             pass 
             self.mT__48()
 
 
         elif alt20 == 33:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:192: ID
+            # BatchScript.g:1:192: T__49
+            pass 
+            self.mT__49()
+
+
+        elif alt20 == 34:
+            # BatchScript.g:1:198: ID
             pass 
             self.mID()
 
 
-        elif alt20 == 34:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:195: INT
+        elif alt20 == 35:
+            # BatchScript.g:1:201: INT
             pass 
             self.mINT()
 
 
-        elif alt20 == 35:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:199: FLOAT
+        elif alt20 == 36:
+            # BatchScript.g:1:205: FLOAT
             pass 
             self.mFLOAT()
 
 
-        elif alt20 == 36:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:205: COMMENT
+        elif alt20 == 37:
+            # BatchScript.g:1:211: COMMENT
             pass 
             self.mCOMMENT()
 
 
-        elif alt20 == 37:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:213: WS
+        elif alt20 == 38:
+            # BatchScript.g:1:219: WS
             pass 
             self.mWS()
 
 
-        elif alt20 == 38:
-            # /Users/wcook/workspace/batch-python-runtime/src/runtime/batch/syntax/BatchScript.g:1:216: STRING
+        elif alt20 == 39:
+            # BatchScript.g:1:222: STRING
             pass 
             self.mSTRING()
 
@@ -1999,7 +2012,7 @@ class BatchScriptLexer(Lexer):
         )
 
     DFA10_accept = DFA.unpack(
-        u"\2\uffff\1\2\1\3\1\1"
+        u"\2\uffff\1\2\1\1\1\3"
         )
 
     DFA10_special = DFA.unpack(
@@ -2009,7 +2022,7 @@ class BatchScriptLexer(Lexer):
             
     DFA10_transition = [
         DFA.unpack(u"\1\2\1\uffff\12\1"),
-        DFA.unpack(u"\1\4\1\uffff\12\1\13\uffff\1\3\37\uffff\1\3"),
+        DFA.unpack(u"\1\3\1\uffff\12\1\13\uffff\1\4\37\uffff\1\4"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u"")
@@ -2017,90 +2030,95 @@ class BatchScriptLexer(Lexer):
 
     # class definition for DFA #10
 
-    DFA10 = DFA
+    class DFA10(DFA):
+        pass
+
+
     # lookup tables for DFA #20
 
     DFA20_eot = DFA.unpack(
-        u"\1\uffff\7\31\1\uffff\1\51\6\uffff\1\53\1\55\1\57\3\uffff\1\62"
-        u"\1\uffff\1\64\1\uffff\1\65\2\uffff\1\66\1\67\11\31\20\uffff\3\31"
-        u"\1\104\3\31\1\110\1\31\1\112\1\113\1\114\1\uffff\3\31\1\uffff\1"
-        u"\120\3\uffff\1\31\1\122\1\31\1\uffff\1\31\1\uffff\1\125\1\31\1"
-        u"\uffff\1\127\1\uffff"
+        u"\1\uffff\10\32\1\uffff\1\53\6\uffff\1\55\1\57\1\61\3\uffff\1\64"
+        u"\1\uffff\1\65\1\uffff\1\67\2\uffff\1\70\1\71\12\32\20\uffff\3\32"
+        u"\1\107\4\32\1\114\1\32\1\116\1\117\1\120\1\uffff\4\32\1\uffff\1"
+        u"\125\3\uffff\1\32\1\127\1\32\1\131\1\uffff\1\32\1\uffff\1\133\1"
+        u"\uffff\1\32\1\uffff\1\135\1\uffff"
         )
 
     DFA20_eof = DFA.unpack(
-        u"\130\uffff"
+        u"\136\uffff"
         )
 
     DFA20_min = DFA.unpack(
-        u"\1\11\1\146\1\150\1\154\1\141\1\125\2\141\1\uffff\1\75\6\uffff"
-        u"\3\75\3\uffff\1\52\1\uffff\1\60\1\uffff\1\56\2\uffff\2\60\1\145"
-        u"\1\165\1\163\1\162\1\156\1\154\1\124\1\162\1\164\20\uffff\1\156"
-        u"\2\145\1\60\1\143\1\163\1\120\1\60\1\145\3\60\1\uffff\1\164\1\145"
-        u"\1\125\1\uffff\1\60\3\uffff\1\151\1\60\1\124\1\uffff\1\157\1\uffff"
-        u"\1\60\1\156\1\uffff\1\60\1\uffff"
+        u"\1\11\1\146\1\150\1\154\1\141\1\125\1\116\2\141\1\uffff\1\75\6"
+        u"\uffff\3\75\3\uffff\1\52\1\uffff\1\60\1\uffff\1\56\2\uffff\2\60"
+        u"\1\145\1\165\1\163\1\162\1\156\1\154\1\124\1\120\1\162\1\164\20"
+        u"\uffff\1\156\2\145\1\60\1\143\1\163\1\120\1\125\1\60\1\145\3\60"
+        u"\1\uffff\1\164\1\145\1\125\1\124\1\uffff\1\60\3\uffff\1\151\1\60"
+        u"\1\124\1\60\1\uffff\1\157\1\uffff\1\60\1\uffff\1\156\1\uffff\1"
+        u"\60\1\uffff"
         )
 
     DFA20_max = DFA.unpack(
-        u"\1\175\1\156\1\162\1\154\1\165\1\125\2\141\1\uffff\1\75\6\uffff"
-        u"\3\75\3\uffff\1\57\1\uffff\1\71\1\uffff\1\145\2\uffff\2\172\1\145"
-        u"\1\165\1\163\1\162\1\156\1\154\1\124\1\162\1\164\20\uffff\1\156"
-        u"\2\145\1\172\1\143\1\163\1\120\1\172\1\145\3\172\1\uffff\1\164"
-        u"\1\145\1\125\1\uffff\1\172\3\uffff\1\151\1\172\1\124\1\uffff\1"
-        u"\157\1\uffff\1\172\1\156\1\uffff\1\172\1\uffff"
+        u"\1\175\1\156\1\162\1\154\1\165\1\125\1\116\2\141\1\uffff\1\75\6"
+        u"\uffff\3\75\3\uffff\1\57\1\uffff\1\71\1\uffff\1\145\2\uffff\2\172"
+        u"\1\145\1\165\1\163\1\162\1\156\1\154\1\124\1\120\1\162\1\164\20"
+        u"\uffff\1\156\2\145\1\172\1\143\1\163\1\120\1\125\1\172\1\145\3"
+        u"\172\1\uffff\1\164\1\145\1\125\1\124\1\uffff\1\172\3\uffff\1\151"
+        u"\1\172\1\124\1\172\1\uffff\1\157\1\uffff\1\172\1\uffff\1\156\1"
+        u"\uffff\1\172\1\uffff"
         )
 
     DFA20_accept = DFA.unpack(
-        u"\10\uffff\1\14\1\uffff\1\16\1\17\1\20\1\21\1\22\1\23\3\uffff\1"
-        u"\32\1\33\1\34\1\uffff\1\37\1\uffff\1\41\1\uffff\1\45\1\46\13\uffff"
-        u"\1\24\1\15\1\25\1\36\1\27\1\26\1\31\1\30\1\34\1\44\1\35\1\43\1"
-        u"\40\1\42\1\1\1\12\14\uffff\1\4\3\uffff\1\7\1\uffff\1\2\1\10\1\3"
-        u"\3\uffff\1\13\1\uffff\1\11\2\uffff\1\6\1\uffff\1\5"
+        u"\11\uffff\1\15\1\uffff\1\17\1\20\1\21\1\22\1\23\1\24\3\uffff\1"
+        u"\33\1\34\1\35\1\uffff\1\40\1\uffff\1\42\1\uffff\1\46\1\47\14\uffff"
+        u"\1\25\1\16\1\26\1\37\1\30\1\27\1\32\1\31\1\35\1\45\1\36\1\41\1"
+        u"\44\1\43\1\1\1\13\15\uffff\1\4\4\uffff\1\10\1\uffff\1\2\1\11\1"
+        u"\3\4\uffff\1\14\1\uffff\1\12\1\uffff\1\7\1\uffff\1\6\1\uffff\1"
+        u"\5"
         )
 
     DFA20_special = DFA.unpack(
-        u"\130\uffff"
+        u"\136\uffff"
         )
 
             
     DFA20_transition = [
-        DFA.unpack(u"\2\33\2\uffff\1\33\22\uffff\1\33\1\20\1\34\3\uffff\1"
-        u"\17\1\uffff\1\14\1\15\1\25\1\23\1\27\1\24\1\30\1\26\12\32\1\uffff"
-        u"\1\10\1\21\1\11\1\22\2\uffff\16\31\1\5\13\31\4\uffff\1\31\1\uffff"
-        u"\3\31\1\7\1\3\1\4\2\31\1\1\12\31\1\2\1\31\1\6\4\31\1\12\1\16\1"
-        u"\13"),
-        DFA.unpack(u"\1\35\7\uffff\1\36"),
-        DFA.unpack(u"\1\37\11\uffff\1\40"),
-        DFA.unpack(u"\1\41"),
-        DFA.unpack(u"\1\44\15\uffff\1\42\5\uffff\1\43"),
-        DFA.unpack(u"\1\45"),
+        DFA.unpack(u"\2\34\2\uffff\1\34\22\uffff\1\34\1\21\1\35\3\uffff\1"
+        u"\20\1\uffff\1\15\1\16\1\26\1\24\1\30\1\25\1\31\1\27\12\33\1\uffff"
+        u"\1\11\1\22\1\12\1\23\2\uffff\10\32\1\6\5\32\1\5\13\32\4\uffff\1"
+        u"\32\1\uffff\3\32\1\10\1\3\1\4\2\32\1\1\12\32\1\2\1\32\1\7\4\32"
+        u"\1\13\1\17\1\14"),
+        DFA.unpack(u"\1\36\7\uffff\1\37"),
+        DFA.unpack(u"\1\40\11\uffff\1\41"),
+        DFA.unpack(u"\1\42"),
+        DFA.unpack(u"\1\45\15\uffff\1\43\5\uffff\1\44"),
         DFA.unpack(u"\1\46"),
         DFA.unpack(u"\1\47"),
-        DFA.unpack(u""),
         DFA.unpack(u"\1\50"),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
+        DFA.unpack(u"\1\51"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\52"),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
         DFA.unpack(u"\1\54"),
         DFA.unpack(u"\1\56"),
+        DFA.unpack(u"\1\60"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u""),
-        DFA.unpack(u"\1\61\4\uffff\1\61"),
+        DFA.unpack(u"\1\63\4\uffff\1\63"),
         DFA.unpack(u""),
-        DFA.unpack(u"\12\63"),
+        DFA.unpack(u"\12\66"),
         DFA.unpack(u""),
-        DFA.unpack(u"\1\63\1\uffff\12\32\13\uffff\1\63\37\uffff\1\63"),
+        DFA.unpack(u"\1\66\1\uffff\12\33\13\uffff\1\66\37\uffff\1\66"),
         DFA.unpack(u""),
         DFA.unpack(u""),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
-        DFA.unpack(u"\1\70"),
-        DFA.unpack(u"\1\71"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
         DFA.unpack(u"\1\72"),
         DFA.unpack(u"\1\73"),
         DFA.unpack(u"\1\74"),
@@ -2108,59 +2126,69 @@ class BatchScriptLexer(Lexer):
         DFA.unpack(u"\1\76"),
         DFA.unpack(u"\1\77"),
         DFA.unpack(u"\1\100"),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
         DFA.unpack(u"\1\101"),
         DFA.unpack(u"\1\102"),
         DFA.unpack(u"\1\103"),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u"\1\104"),
         DFA.unpack(u"\1\105"),
         DFA.unpack(u"\1\106"),
-        DFA.unpack(u"\1\107"),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
+        DFA.unpack(u"\1\110"),
         DFA.unpack(u"\1\111"),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
-        DFA.unpack(u""),
+        DFA.unpack(u"\1\112"),
+        DFA.unpack(u"\1\113"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
         DFA.unpack(u"\1\115"),
-        DFA.unpack(u"\1\116"),
-        DFA.unpack(u"\1\117"),
-        DFA.unpack(u""),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
-        DFA.unpack(u""),
-        DFA.unpack(u""),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\121"),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
+        DFA.unpack(u"\1\122"),
         DFA.unpack(u"\1\123"),
-        DFA.unpack(u""),
         DFA.unpack(u"\1\124"),
         DFA.unpack(u""),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
-        DFA.unpack(u"\1\126"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
         DFA.unpack(u""),
-        DFA.unpack(u"\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31"),
+        DFA.unpack(u""),
+        DFA.unpack(u""),
+        DFA.unpack(u"\1\126"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
+        DFA.unpack(u"\1\130"),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
+        DFA.unpack(u""),
+        DFA.unpack(u"\1\132"),
+        DFA.unpack(u""),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
+        DFA.unpack(u""),
+        DFA.unpack(u"\1\134"),
+        DFA.unpack(u""),
+        DFA.unpack(u"\12\32\7\uffff\32\32\4\uffff\1\32\1\uffff\32\32"),
         DFA.unpack(u"")
     ]
 
     # class definition for DFA #20
 
-    DFA20 = DFA
+    class DFA20(DFA):
+        pass
+
+
  
 
 

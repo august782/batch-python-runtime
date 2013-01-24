@@ -179,6 +179,17 @@ class Out :
     def __str__(self) :
         return "(Out " + str(self.label) + " " + str(self.expr) + ")"
 
+class In :
+    
+    def __init__(self, label) :
+        self.label = label
+    
+    def interp(self, out, env) :
+        return env.lookup(self.label)   # This is under assumption that input forest is inserted into environment
+    
+    def __str__(self) :
+        return "(In " + str(self.label) + ")"
+
 class Prop :
     
     def __init__(self, base, prop) :
@@ -209,7 +220,10 @@ class Call :
         return getattr(self.base.interp(out, env), self.func)(*real_args)
     
     def __str__(self) :
-        return "(Call " + str(self.base) + "." + str(self.func) + "(" + str(self.args) + "))"
+        if self.args :
+            return "(Call " + str(self.base) + "." + str(self.func) + "(" + ",".join(map(str, self.args)) + "))"
+        else :
+            return "(Call " + str(self.base) + "." + str(self.func) + "())"
 
 class If :
     
@@ -239,3 +253,11 @@ class Data :
     
     def __str__(self) :
         return "(Data " + str(self.v) + ")"
+
+class Skip :
+    
+    def interp(self, out, env) :
+        return None
+    
+    def __str__(self) :
+        return "(Skip)"

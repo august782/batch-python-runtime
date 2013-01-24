@@ -5,17 +5,18 @@ options {
 }
 
 tokens {
-    IF      =   'if';
-    THEN    =   'then';
-    ELSE    =   'else';
-    FOR     =   'for';
-	FUNCTION = 'function';
-	OUTPUT = 'OUTPUT';
-    VAR     =   'var';
-    TRUE    =   'true';
-    FALSE   =   'false';
-    IN      =   'in';
-    DATE    =   'date';
+    IF          =   'if';
+    THEN        =   'then';
+    ELSE        =   'else';
+    FOR         =   'for';
+	FUNCTION    =   'function';
+	OUTPUT      =   'OUTPUT';
+    INPUT       =   'INPUT';
+    VAR         =   'var';
+    TRUE        =   'true';
+    FALSE       =   'false';
+    IN          =   'in';
+    DATE        =   'date';
 }
 
 @header {
@@ -38,6 +39,7 @@ statements returns [value]
 
 block returns [Expression value]
     : '{' e=statements '}'  {$value = e;} 
+    | '{' '}'               {$value = Skip()}
     ;
 
 statement returns [value]
@@ -121,6 +123,7 @@ assign returns [value]
 
 prim returns [value]
     :   OUTPUT '(' b=STRING ',' e=expr ')'  {$value=Out($b.getText()[1:-1], $e.value);}
+    |   INPUT  '(' b=STRING ')' {$value=In($b.getText()[1:-1]);}
     |   b=ID              {$value=Var($b.getText());}
         r=access[value]   {$value=$r.value;}
     ;
