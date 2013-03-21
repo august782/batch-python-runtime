@@ -7,9 +7,9 @@ class Seq :
         self.statement = statement
         self.rest = rest
     
-    def interp(self, out, env) :
-        self.statement.interp(out, env)
-        return self.rest.interp(out, env)
+    def interp(self, forest, out, env) :
+        self.statement.interp(forest, out, env)
+        return self.rest.interp(forest, out, env)
     
     def __str__(self) :
         return "(Seq " + str(self.statement) + ", " + str(self.rest) + ")"
@@ -21,8 +21,8 @@ class Let :
         self.value = value
         self.statement = statement
     
-    def interp(self, out, env) :
-        return self.statement.interp(out, Env(self.var, self.value.interp(out, env), env))
+    def interp(self, forest, out, env) :
+        return self.statement.interp(forest, out, Env(self.var, self.value.interp(out, env), env))
     
     def __str__(self) :
         return "(Let " + str(self.var) + " = " + str(self.value) + " in " + str(self.statement) + ")"
@@ -34,13 +34,38 @@ class For :
         self.listexpr = listexpr
         self.block = block
     
-    def interp(self, out, env) :
-        l=self.listexpr.interp(out, env)
-        out[self.label] = []
-        for x in l :
+    def interp(self, forest, out, env) :
+        #l = self.listexpr.interp(forest, out, env)
+        l = self.listexpr.interp(forest, out, env) # Assume it's an output
+        """
+        if self.label in forest :
+            newforest = forest[self.label]   # Get nested dictionary
+        else :
+            newforest = {}
+        """
+        """
+        if self.label in forest :
+            multiforest = forest[self.label]    # Means there is multiforest inside
+        else :
+            multiforest = []
+            for i in l :
+                multiforest.append({})
+        """
+        label = self.listexpr.label     # Assume is Out/In expression
+        if label in forest :
+            multiforest = forest[label]
+        else :
+            multiforest = []
+            for i in l :
+                multiforest.append({})
+        zipped = zip(multiforest, l)    # Zip them together to use in the looping step
+        #out[self.label] = []
+        out[label] = []
+        for x in zipped :
             temp_dict = {} 
-            self.block.interp(temp_dict, Env(self.label, x, env))
-            out[self.label].append(temp_dict)
+            self.block.interp(x[0], temp_dict, Env(self.label, x[1], env))
+            #out[self.label].append(temp_dict)
+            out[label].append(temp_dict)
         return None
     
     def __str__(self) :
@@ -52,7 +77,7 @@ class Fun :
         self.param = param
         self.code = code
     
-    def interp(self, out, env) :
+    def interp(self, forest, out, env) :
         return Closure(env, self.param, self.code)
     
     def __str__(self) :
@@ -64,8 +89,8 @@ class Or :
         self.a = a
         self.b = b
     
-    def interp(self, out, env) :
-        return self.a.interp(out, env) or self.b.interp(out, env)
+    def interp(self, forest, out, env) :
+        return self.a.interp(forest, out, env) or self.b.interp(forest, out, env)
     
     def __str__(self) :
         return "(or " + str(self.a) + " " + str(self.b) + ")"
@@ -76,8 +101,8 @@ class And :
         self.a = a
         self.b = b
     
-    def interp(self, out, env) :
-        return self.a.interp(out, env) and self.b.interp(out, env)
+    def interp(self, forest, out, env) :
+        return self.a.interp(forest, out, env) and self.b.interp(forest, out, env)
     
     def __str__(self) :
         return "(and " + str(self.a) + " " + str(self.b) + ")"
@@ -87,8 +112,8 @@ class Not :
     def __init__(self, a) :
         self.a = a
     
-    def interp(self, out, env) :
-        return not self.a.interp(out, env)
+    def interp(self, forest, out, env) :
+        return not self.a.interp(forest, out, env)
     
     def __str__(self) :
         return "(not " + str(self.a) + ")"
@@ -113,9 +138,9 @@ class BinOp :
         self.a = a
         self.b = b
     
-    def interp(self, out, env) :
-        aval = self.a.interp(out, env)
-        bval = self.b.interp(out, env)
+    def interp(self, forest, out, env) :
+        aval = self.a.interp(forest, out, env)
+        bval = self.b.interp(forest, out, env)
         if type(aval) is unicode or type(bval) is unicode :
             return BinOp.op_dict[self.op](unicode(aval), unicode(bval))
         return BinOp.op_dict[self.op](aval, bval)
@@ -140,9 +165,9 @@ class Assign :
         self.op = op
         self.expr = expr
     
-    def interp(self, out, env) :
-        value = op_dict[self.op](self.base.interp(out, env), self.expr.interp(out, env))
-        self.base.assign(out, env, value)
+    def interp(self, forest, out, env) :
+        value = op_dict[self.op](self.base.interp(forest, out, env), self.expr.interp(forest, out, env))
+        self.base.assign(forest, out, env, value)
         return value
     
     def __str__(self) :
@@ -153,13 +178,13 @@ class Var :
     def __init__(self, var) :
         self.var = var
     
-    def interp(self, out, env) :
+    def interp(self, forest, out, env) :
         # Quick hack...
         if (self.var == unicode("skip")) :
             return None
         return env.lookup(self.var)
     
-    def assign(self, out, env, value) :
+    def assign(self, forest, out, env, value) :
         env.change(self.var, value)
     
     def __str__(self) :
@@ -171,8 +196,8 @@ class Out :
         self.label = label
         self.expr = expr
     
-    def interp(self, out, env) :
-        value = self.expr.interp(out, env)
+    def interp(self, forest, out, env) :
+        value = self.expr.interp(forest, out, env)
         out[self.label] = value
         return value
     
@@ -184,8 +209,8 @@ class In :
     def __init__(self, label) :
         self.label = label
     
-    def interp(self, out, env) :
-        return env.lookup(self.label)   # This is under assumption that input forest is inserted into environment
+    def interp(self, forest, out, env) :
+        return forest.get(self.label)
     
     def __str__(self) :
         return "(In " + str(self.label) + ")"
@@ -196,11 +221,11 @@ class Prop :
         self.base = base
         self.prop = prop
     
-    def interp(self, out, env) :
-        return getattr(self.base.interp(out, env), self.prop)
+    def interp(self, forest, out, env) :
+        return getattr(self.base.interp(forest, out, env), self.prop)
     
-    def assign(self, out, value) :
-        setattr(self.base.interp(out, env), self.prop, value)
+    def assign(self, forest, out, value) :
+        setattr(self.base.interp(forest, out, env), self.prop, value)
         
     def __str__(self) :
         return "(Prop " + str(self.base) + "." + str(self.prop) + ")"
@@ -212,12 +237,12 @@ class Call :
         self.func = func
         self.args = args
     
-    def interp(self, out, env) :
+    def interp(self, forest, out, env) :
         real_args = []
         if (self.args) :
             for a in self.args :
-                real_args.append(a.interp(out, env))
-        return getattr(self.base.interp(out, env), self.func)(*real_args)
+                real_args.append(a.interp(forest, out, env))
+        return getattr(self.base.interp(forest, out, env), self.func)(*real_args)
     
     def __str__(self) :
         if self.args :
@@ -232,11 +257,11 @@ class If :
         self.t = t
         self.e = e
     
-    def interp(self, out, env) :
-        if self.c.interp(out, env) == True :
-            return self.t.interp(out, env)
+    def interp(self, forest, out, env) :
+        if self.c.interp(forest, out, env) == True :
+            return self.t.interp(forest, out, env)
         elif self.e != None :
-            return self.e.interp(out, env)
+            return self.e.interp(forest, out, env)
         else :
             return None
     
@@ -248,7 +273,7 @@ class Data :
     def __init__(self, v) :
         self.v = v
     
-    def interp(self, out, env) :
+    def interp(self, forest, out, env) :
         return self.v
     
     def __str__(self) :
@@ -256,7 +281,7 @@ class Data :
 
 class Skip :
     
-    def interp(self, out, env) :
+    def interp(self, forest, out, env) :
         return None
     
     def __str__(self) :

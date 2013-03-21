@@ -29,19 +29,21 @@ class Service :
     def serve(self, script, forest) :
         char_stream = antlr3.ANTLRStringStream(script)
         
-        print "parsing..."
+        #print "parsing..."
         lexer = BatchScriptLexer(char_stream)
         tokens = antlr3.CommonTokenStream(lexer)
         parser = BatchScriptParser(tokens)
         
-        print "have script..."
+        #print "have script..."
         program = parser.main()
-        print str(program)
+        #print str(program)
+        if not forest :
+            forest = {}
         out = {}
         env = Env('ROOT', self.root, None)
-        if forest :
-            for v in forest :
-                env = Env(v, forest[v], env)
-        program.interp(out, env)
+        #if forest :
+        #    for v in forest :
+        #        env = Env(v, forest[v], env)
+        program.interp(forest, out, env)
         return out
 
